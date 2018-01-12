@@ -11,9 +11,11 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BuyersComponent } from './components/buyers/buyers.component';
 import { ProductsComponent } from './components/products/products.component';
+import { BuyersService } from './services/buyers.service';
 
 
 const appRoutes: Routes = [
+  { path: '', component: BuyersComponent },
   { path: 'buyers', component: BuyersComponent },
   { path: 'products', component: ProductsComponent },
 ];
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
     ),
     HttpClientModule
   ],
-  providers: [],
+  providers: [BuyersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

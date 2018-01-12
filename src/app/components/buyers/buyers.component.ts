@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BuyersService} from '../../services/buyers.service';
 
 @Component({
   selector: 'app-buyers',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyersComponent implements OnInit {
 
-  constructor() { }
+  buyers = [];
+  searchTerm = ""; //vrednost koju prosledjujemo pipe-u Filter
+  
+
+  constructor(private _buyersService: BuyersService) {
+    this._buyersService.getBuyers().subscribe(buyers => {
+      this.buyers = buyers;
+      // console.log(buyers);
+    });
+  }
+
+  removeBuyer(buyer)
+  {
+    let index = this.buyers.indexOf(buyer);
+    this.buyers.splice(index, 1);
+  }
 
   ngOnInit() {
   }
